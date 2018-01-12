@@ -1,0 +1,30 @@
+# `rando`
+
+A [Rust] library for iteration in **rand**om **o**rder.
+
+[See the documentation on Docs.rs.][docs]
+
+This software is licensed under [the Apache License, version 2.0][Apache-2.0].
+
+## Building
+
+Most users should use Rust's build tool **[Cargo]** to build this software:
+
+    $ cargo build
+    $ cargo check
+    $ cargo test
+    $ # Etc.
+
+Users of the Linux distribution **[NixOS]** may prefer to use the provided
+`Makefile`, which wraps the tool `nix-shell`:
+
+    $ make build
+    $ make check
+    $ make test
+    $ # Etc.
+
+[Apache-2.0]: <https://apache.org/licenses/LICENSE-2.0>
+[Cargo]: <https://doc.rust-lang.org/cargo/>
+[NixOS]: <https://nixos.org>
+[Rust]: <https://www.rust-lang.org>
+[docs]: <https://docs.rs/rando>
