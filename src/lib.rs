@@ -4,6 +4,10 @@
 #![doc(test(attr(deny(warnings))))]
 //! A library for iteration in random order.
 //!
+//! For some common collection types, this library implements a trait [`Rando`], which provides a
+//! method [`rand_iter`] that can be called to create a [`RandIter`], an iterator type for
+//! iterating over the collection in **rand**om **o**rder.
+//!
 //! # Examples
 //!
 //! ```rust
@@ -39,6 +43,10 @@
 //! # })().unwrap()
 //! # }
 //! ```
+//!
+//! [`RandIter`]: <struct.RandIter.html>
+//! [`Rando`]: <trait.Rando.html>
+//! [`rand_iter`]: <trait.Rando.html#tymethod.rand_iter>
 
 extern crate get_trait;
 extern crate iter_trait;
