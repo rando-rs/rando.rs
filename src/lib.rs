@@ -104,6 +104,7 @@ where
 ///
 /// [`Rando`]: <trait.Rando.html>
 /// [`rand_iter`]: <trait.Rando.html#method.rand_iter>
+#[derive(Debug)]
 pub struct RandIter<
     'coll,
     Collection: ?Sized,
