@@ -12,6 +12,7 @@
 //! use rando::Rando;
 //! use rando::assert_eq_up_to_order;
 //! # fn main() {
+//! # (|| -> ::std::io::Result<()> {
 //!
 //! assert_eq_up_to_order(&[1, 2, 3], [1, 2, 3].rand_iter());
 //!
@@ -25,7 +26,7 @@
 //! assert_eq_up_to_order(&primes, p2);
 //!
 //! // These random number generators have the same seeds...
-//! let rng_1 = StdRng::new().expect("Initializing RNG");
+//! let rng_1 = StdRng::new()?;
 //! let rng_2 = rng_1.clone();
 //!
 //! // ...so `RandIter`s using them should iterate in the same order.
@@ -33,6 +34,8 @@
 //!     primes.rand_iter().with_rng(rng_1).collect::<Vec<_>>(),
 //!     primes.rand_iter().with_rng(rng_2).collect::<Vec<_>>()
 //! );
+//! # Ok(())
+//! # })().unwrap()
 //! # }
 //! ```
 
@@ -142,14 +145,17 @@ where
     /// # use rando::Rando;
     /// # use rando::assert_eq_up_to_order;
     /// # fn main() {
+    /// # (|| -> ::std::io::Result<()> {
     /// use rand::StdRng;
     ///
     /// let primes = [2, 3, 5, 7, 11];
     ///
     /// assert_eq_up_to_order(
     ///     primes.rand_iter(),
-    ///     primes.rand_iter().with_rng(StdRng::new().expect("Initializing RNG")),
+    ///     primes.rand_iter().with_rng(StdRng::new()?),
     /// );
+    /// # Ok(())
+    /// # })().unwrap()
     /// # }
     /// ```
     ///
