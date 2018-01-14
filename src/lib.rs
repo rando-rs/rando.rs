@@ -1,5 +1,5 @@
-#![deny(warnings)]
 #![deny(missing_docs)]
+#![deny(warnings)]
 #![doc(html_root_url = "https://docs.rs/rando/0.1.0")]
 #![doc(test(attr(deny(warnings))))]
 //! A library for iteration in random order.
