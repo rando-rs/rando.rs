@@ -18,3 +18,4 @@ smallvec = "0.6.0"
 
 [dev-dependencies]
 quickcheck = "0.6.0"
+version-sync = "0.5.0"

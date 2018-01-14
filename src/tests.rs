@@ -36,3 +36,13 @@ quickcheck! {
         assert_eq_up_to_order(vec_1, vec_2);
     }
 }
+
+#[test]
+fn check_version_numbers_in_readme_deps() {
+    assert_markdown_deps_updated!("README.mkd");
+}
+
+#[test]
+fn check_docs_html_root_url() {
+    assert_html_root_url_updated!("src/lib.rs");
+}

@@ -1,5 +1,6 @@
 #![deny(warnings)]
 #![deny(missing_docs)]
+#![doc(html_root_url = "https://docs.rs/rando/0.1.0")]
 #![doc(test(attr(deny(warnings))))]
 //! A library for iteration in random order.
 //!
@@ -48,6 +49,10 @@ extern crate smallvec;
 #[cfg(test)]
 #[macro_use]
 extern crate quickcheck;
+
+#[cfg(test)]
+#[macro_use]
+extern crate version_sync;
 
 use get_trait::Get;
 use iter_trait::HasMapData;

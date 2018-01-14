@@ -23,6 +23,9 @@ view-docs:
 clean:
 	@nix-shell --run 'cargo clean'
 
+publish:
+	@nix-shell --run 'cargo test && cargo publish'
+
 fmt:
 	@nix-shell --run 'cargo-fmt'
 
