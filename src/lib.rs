@@ -422,6 +422,7 @@ where
 ///
 /// assert_eq_up_to_order(&['a', 'b', 'c'], &['c', 'a', 'b']);
 /// ```
+#[inline]
 pub fn assert_eq_up_to_order<I1, I2, Item>(i1: I1, i2: I2)
 where
     I1: IntoIterator<Item = Item>,
@@ -431,6 +432,7 @@ where
     let mut counts_1 = BTreeMap::<Item, usize>::new();
     let mut counts_2 = BTreeMap::<Item, usize>::new();
 
+    #[inline]
     fn count<I, Item>(it: I, counts: &mut BTreeMap<Item, usize>)
     where
         I: IntoIterator<Item = Item>,
