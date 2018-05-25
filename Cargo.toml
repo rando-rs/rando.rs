@@ -1,6 +1,6 @@
 [package]
 name = "rando"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["c74d <8573dd@gmail.com>"]
 
 description = "A library for iteration in random order."
