@@ -25,9 +25,18 @@ quickcheck! {
         assert_eq_up_to_order(v.rand_iter(), v.iter());
     }
 
-    fn std_rng_1(v: Vec<u32>) -> () {
+    fn with_rng_1(v: Vec<u32>) -> () {
         assert_eq_up_to_order(
             v.rand_iter().with_rng(rand::StdRng::from_rng(rand::EntropyRng::new()).unwrap()),
+            v.iter(),
+        );
+    }
+
+    fn with_rng_2(v: Vec<u32>) -> () {
+        let mut rng = rand::StdRng::from_rng(rand::EntropyRng::new()).unwrap();
+
+        assert_eq_up_to_order(
+            v.rand_iter().with_rng(&mut rng),
             v.iter(),
         );
     }
