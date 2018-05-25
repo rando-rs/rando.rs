@@ -1,6 +1,7 @@
 use super::*;
 use rand;
 use rand::Rng;
+use rand::SeedableRng;
 
 quickcheck! {
     fn const_1() -> () {
@@ -25,7 +26,10 @@ quickcheck! {
     }
 
     fn std_rng_1(v: Vec<u32>) -> () {
-        assert_eq_up_to_order(v.rand_iter().with_rng(rand::StdRng::new().unwrap()), v.iter());
+        assert_eq_up_to_order(
+            v.rand_iter().with_rng(rand::StdRng::from_rng(rand::EntropyRng::new()).unwrap()),
+            v.iter(),
+        );
     }
 
     fn assert_eq_up_to_order_1(vec_1: Vec<u32>) -> () {

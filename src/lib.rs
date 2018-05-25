@@ -13,6 +13,8 @@
 //! ```rust
 //! # extern crate rand;
 //! # extern crate rando;
+//! use rand::EntropyRng;
+//! use rand::SeedableRng;
 //! use rand::StdRng;
 //! use rando::Rando;
 //! use rando::assert_eq_up_to_order;
@@ -31,7 +33,7 @@
 //! assert_eq_up_to_order(&primes, p2);
 //!
 //! // These random number generators have the same seeds...
-//! let rng_1 = StdRng::new()?;
+//! let rng_1 = StdRng::from_rng(EntropyRng::new())?;
 //! let rng_2 = rng_1.clone();
 //!
 //! // ...so `RandIter`s using them should iterate in the same order.
@@ -65,7 +67,7 @@ extern crate version_sync;
 use get_trait::Get;
 use iter_trait::HasMapData;
 use len_trait::Len;
-use rand::distributions::IndependentSample;
+use rand::distributions::Distribution;
 use rand::distributions::Range;
 use smallvec::SmallVec;
 use std::collections::BTreeMap;
@@ -156,17 +158,18 @@ where
     /// ```rust
     /// # extern crate rando;
     /// # extern crate rand;
+    /// # use rand::SeedableRng;
     /// # use rando::Rando;
     /// # use rando::assert_eq_up_to_order;
     /// # fn main() {
     /// # (|| -> ::std::io::Result<()> {
-    /// use rand::StdRng;
-    ///
     /// let primes = [2, 3, 5, 7, 11];
+    ///
+    /// let other_rng = rand::StdRng::from_rng(rand::EntropyRng::new())?;
     ///
     /// assert_eq_up_to_order(
     ///     primes.rand_iter(),
-    ///     primes.rand_iter().with_rng(StdRng::new()?),
+    ///     primes.rand_iter().with_rng(other_rng),
     /// );
     /// # Ok(())
     /// # })().unwrap()
@@ -328,7 +331,7 @@ where
     };
 
     loop {
-        let k = range.ind_sample(rng);
+        let k = range.sample(rng);
 
         if !keys_already_chosen.contains(&k) {
             keys_already_chosen.push(k);
