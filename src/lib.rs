@@ -2,6 +2,7 @@
 #![deny(warnings)]
 #![doc(html_root_url = "https://docs.rs/rando/0.2.0")]
 #![doc(test(attr(deny(warnings))))]
+#![forbid(unsafe_code)]
 //! A library for iteration in random order.
 //!
 //! For some common collection types, this library implements a trait [`Rando`], which provides a
